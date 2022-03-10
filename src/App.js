@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter, Route } from "react-router-dom";
+import "./App.css";
+import Topbar from "./components/Topbar";
+import Searchbar from "./components/Searchbar";
+import Countries from "./components/Countries";
+import APIContextProvider from "./contexts/CountriesContext";
+import SearchbarProvider from "./contexts/SearchbarContext";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    // use context component
+    <BrowserRouter>
+      <APIContextProvider>
+        <div className="">
+          <div className="App container-fluid mx-auto bg-veryLightGreyBg dark:bg-veryDarkBlueBg min-h-screen">
+            <Topbar />
+            <div className="container mx-auto">
+              <SearchbarProvider>
+                <Searchbar />
+                <Countries />
+              </SearchbarProvider>
+            </div>
+          </div>
+        </div>
+      </APIContextProvider>
+    </BrowserRouter>
   );
 }
 
