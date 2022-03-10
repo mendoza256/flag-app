@@ -10,26 +10,30 @@ const Searchbar = () => {
   const handleFilterChange = (event) => {
     let selectedRegion = event.target.value;
     setFilter(selectedRegion);
-    console.log(selectedRegion);
   };
 
   return (
     <div
-      className="mt-10 bg-transparent mx-auto container 
+      className="mt-10 mx-auto container 
                     flex flex-col justify-center items-center
                     md:flex-row md:justify-between
                     
     "
     >
-      <div id="search-field" className="flex flex-row items-center relative">
-        <div className="lupe absolute left-4">
-          <FaSearch />
+      {/* Search Field */}
+      <div
+        id="search-field"
+        className="flex flex-row items-center 
+                  border-none w-96 h-14 rounded-md bg-white
+                dark:bg-darkBlueEl dark:text-whiteTextEl
+                  shadow-xl"
+      >
+        <div id="lupe" className="pl-5">
+          <FaSearch fill="gray" />
         </div>
         <input
-          className="rounded border-none shadow-xl
-                    w-96 h-14 pl-10
-                    dark:bg-darkBlueEl dark:text-whiteTextEl
-                    "
+          className="border-none w-full h-full outline-none rounded-full bg-transparent
+                    border-transparent focus:border-transparent focus:ring-0"
           type="text"
           name="search"
           placeholder="Search for a country..."
@@ -43,16 +47,16 @@ const Searchbar = () => {
             }
           }}
         ></input>
-        <label htmlFor="search"></label>
       </div>
-      <div>
+      {/* Filter by Region */}
+      <div id="filter-section">
         <div id="filter" className="mt-10 md:mt-0">
           <select
-            value={filter}
+            defaultValue={"DEFAULT"}
             onChange={handleFilterChange}
-            className="dark:bg-darkBlueEl dark:text-whiteTextEl"
+            className="dark:bg-darkBlueEl dark:text-whiteTextEl rounded-md"
           >
-            <option value="" disabled selected>
+            <option value="DEFAULT" disabled>
               Filter by Region
             </option>
             <option value="All">All</option>

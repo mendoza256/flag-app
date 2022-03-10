@@ -17,14 +17,13 @@ const Topbar = () => {
 
   return (
     <div
-      className="sticky top-0 h-16
+      className="sticky top-0 h-20
                 bg-veryLightGreyBg shadow-lg text-veryDarkBlueText
                 dark:bg-darkBlueEl dark:text-whiteTextEl
-                flex items-center z-2
-                "
+                flex justify-center"
     >
       <div className="container mx-auto flex flex-row items-center justify-between">
-        <h1 className="font-bold">Where in the world?</h1>
+        <h1 className="font-bold text-3xl">Where in the world?</h1>
 
         <div id="toggle-theme" className="select-none" onClick={handleClick}>
           <TopbarIcon icon={<IoMoonOutline />} />
