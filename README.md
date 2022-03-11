@@ -1,70 +1,95 @@
-# Getting Started with Create React App
+# Frontend Mentor - REST Countries API with color theme switcher solution
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a solution to the [REST Countries API with color theme switcher challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-## Available Scripts
+## Table of contents
 
-In the project directory, you can run:
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
+- [Acknowledgments](#acknowledgments)
 
-### `npm start`
+**Note: Delete this note and update the table of contents based on what sections you keep.**
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Overview
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### The challenge
 
-### `npm test`
+Users should be able to:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- See all countries from the API on the homepage
+- Search for a country using an `input` field
+- Filter countries by region
+- Click on a country to see more detailed information on a separate page
+- Click through to the border countries on the detail page
+- Toggle the color scheme between light and dark mode _(optional)_
 
-### `npm run build`
+### Screenshot
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![](/_material/flap-app.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## My process
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Built with
 
-### `npm run eject`
+- [React](https://reactjs.org/) - JS library
+- [Tailwind](https://tailwindcss.com/) - For styling
+- [Countries Rest API](https://restcountries.com/) - API for Country Information
+- [React Router](https://reactrouter.com/docs/en/v6) - React Router
+- Tailwind Custom Colors
+- Tailwind Custom Classes
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+**Note: These are just examples. Delete this note and replace the list above with your own choices**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### What I learned
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+I extensively learned how to use new state management methods with the useContext hooks and how to implement these in a React Router environment. My previous project would've been so much easier if I knew about it :) In React Router I learned more about the useParams hook and how to generate sites off the params and the API.
+Also I worked way more with Tailwind than before. I love how you never have to leave the .js files and React + Tailwind enables you to combbine logic, document elements and styling in one document.
+Additionally this is the first time I implemented a filter on rendered elements on the home page by filtering the API objects that were returned.
+This was also the first time I implemented a dark theme switch with tailwind and a useDarkTheme hook.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+The javascript filter I used below:
 
-## Learn More
+```js
+countriesData
+        // Filter for region filter
+        .filter((country) => {
+          if (!filter) return true;
+          if (filter === "All") return true;
+          let region = country.region;
+          return region === filter ? true : false;
+        })
+        // Filter for search field
+        .filter((country) => {
+          if (!query) return true;
+          let name = country.name.toLowerCase();
+          return name.startsWith(query.toLowerCase());
+        })
+        // Map all/filtered countries to page
+        .map((country) => (
+          /* Country Card */
+          <Link to={`/${country.alpha3Code}`} key={`card-${country.name}`}>
+            <div>All country information here</div>
+          </Link>
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Continued development
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+I still need to finish the design of the detail pages and the layout of the country cards on the home page. They're still too far apart when only 2-3 countries are displayed in a row because of "flex justify-between".
 
-### Code Splitting
+### Useful resources
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
+- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
 
-### Analyzing the Bundle Size
+## Author
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- Author - [Christian Graumann](https://www.christiangraumann.de/)
+- LinkedIn - [@LinkedIn](https://www.linkedin.com/in/christian-graumann-0a3637158/)
