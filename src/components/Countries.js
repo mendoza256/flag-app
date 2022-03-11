@@ -76,7 +76,9 @@ const Countries = () => {
     </div>
   ) : (
     // If countries data not loaded:
-    <p>Loading...</p>
+    <div className="h-screen flex justify-center">
+      <p>Loading...</p>
+    </div>
   );
 };
 
