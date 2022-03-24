@@ -5,7 +5,7 @@ import { FaSearch } from "react-icons/fa";
 
 const Searchbar = () => {
   const { regions } = useAPI();
-  const { query, setQuery, filter, setFilter } = useContext(SearchbarContext);
+  const { query, setQuery, setFilter } = useContext(SearchbarContext);
 
   const handleFilterChange = (event) => {
     let selectedRegion = event.target.value;

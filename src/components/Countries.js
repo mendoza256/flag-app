@@ -31,7 +31,7 @@ const Countries = () => {
         .filter((country) => {
           if (!query) return true;
           let name = country.name.toLowerCase();
-          return name.startsWith(query.toLowerCase());
+          return name.includes(query.toLowerCase());
         })
         // Map all/filtered countries to page
         .map((country) => (
