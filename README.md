@@ -30,8 +30,6 @@ Users should be able to:
 - Tailwind Custom Colors
 - Tailwind Custom Classes
 
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
-
 ### What I learned
 
 I extensively learned how to use new state management methods with the useContext hooks and how to implement these in a React Router environment. My previous project would've been so much easier if I knew about it :) In React Router I learned more about the useParams hook and how to generate sites off the params and the API.
@@ -54,7 +52,7 @@ countriesData
         .filter((country) => {
           if (!query) return true;
           let name = country.name.toLowerCase();
-          return name.startsWith(query.toLowerCase());
+          return name.includes(query.toLowerCase());
         })
         // Map all/filtered countries to page
         .map((country) => (
