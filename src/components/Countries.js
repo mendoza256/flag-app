@@ -15,8 +15,7 @@ const Countries = () => {
     <div
       className="bg-transparent container mx-auto
                 mt-16 pb-32
-                flex flex-col justify-between items-center gap-y-12 gap-x-8
-                sm:flex-row sm:flex-wrap 
+                grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10
                 "
     >
       {countriesData
@@ -36,17 +35,19 @@ const Countries = () => {
         // Map all/filtered countries to page
         .map((country) => (
           /* Country Card */
-          <Link to={`/${country.alpha3Code}`} key={`card-${country.name}`}>
-            <div
-              className="card w-72
+          <Link
+            className="card max-w-fit
                     text-14px text-left whitespace-normal
                     text-veryDarkBlueText bg-whiteTextEl
                     dark:text-whiteTextEl dark:bg-darkBlueEl
                     shadow-lg rounded-md hover:shadow-xl
                     overflow-hidden transition-all
                     "
-            >
-              <div className="flag w-72 h-48 overflow-hidden">
+            to={`/${country.alpha3Code}`}
+            key={`card-${country.name}`}
+          >
+            <div>
+              <div className="flag  overflow-hidden">
                 <img
                   className="w-full h-full object-cover"
                   src={country.flag}
