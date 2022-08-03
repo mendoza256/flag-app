@@ -65,6 +65,7 @@ countriesData
 ### Continued development
 
 I still need to finish the design of the detail pages and the layout of the country cards on the home page. They're still too far apart when only 2-3 countries are displayed in a row because of "flex justify-between".
+Edit: Implemented `display: grid` to solve this.
 
 ### Useful resources
 
